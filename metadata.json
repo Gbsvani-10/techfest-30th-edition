@@ -1,0 +1,6 @@
+{
+  "name": "Techfest IIT Bombay — 30th Edition",
+  "description": "Asia's Largest Science and Technology Festival at IIT Bombay. 30th Edition, December 16–18, 2026.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

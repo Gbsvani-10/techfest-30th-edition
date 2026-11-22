@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Barlow Condensed", sans-serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --color-obsidian: #050505;
+  --color-surface: #0E0E0F;
+  --color-surface-elevated: #151517;
+  --color-accent-orange: #FF5500;
+  --color-accent-red: #E11D48;
+}
+
+@layer base {
+  html {
+    background-color: #050505;
+    color: #F5F5F5;
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: #050505;
+  }
+
+  :focus-visible {
+    outline: 2px solid #FF5500;
+    outline-offset: 2px;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.ease-editorial {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes ambientDrift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.36;
+  }
+  50% {
+    transform: translate3d(2%, -2%, 0) scale(1.06);
+    opacity: 0.52;
+  }
+}
+
+@keyframes ambientDriftReverse {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1.04);
+    opacity: 0.28;
+  }
+  50% {
+    transform: translate3d(-2%, 2%, 0) scale(0.98);
+    opacity: 0.44;
+  }
+}
+
+.animate-ambient-orange {
+  animation: ambientDrift 11s ease-in-out infinite;
+}
+
+.animate-ambient-crimson {
+  animation: ambientDriftReverse 14s ease-in-out infinite;
+}
+
+@keyframes panelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-panel-in {
+  animation: panelFadeIn 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes marqueeTrack {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  animation: marqueeTrack 34s linear infinite;
+}
+
+.marquee-wrapper:hover .animate-marquee,
+.marquee-wrapper:focus-within .animate-marquee {
+  animation-play-state: paused;
+}
+
+@keyframes arcFlow {
+  0% {
+    stroke-dashoffset: 48;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-arc-flow {
+  animation: arcFlow 2.6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-ambient-orange,
+  .animate-ambient-crimson,
+  .animate-panel-in,
+  .animate-marquee,
+  .animate-arc-flow {
+    animation: none;
+  }
+}
